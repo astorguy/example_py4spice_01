@@ -12,7 +12,7 @@ ARG USERNAME=vscode
 ARG GROUPNAME=vscode
 ARG UID=1000
 ARG GID=1000
-ENV APP_HOME=/workspaces/project
+ENV APP_HOME=/workspaces/example_py4spice_01
 
 RUN addgroup --gid $GID $GROUPNAME \
     && adduser --uid $UID --gid $GID --disabled-password $USERNAME \
