@@ -28,31 +28,31 @@ class Ky:
     SIM_TRANSCRIPT_FILENAME = "sim_transcript_filename"
 
     # # Keys for the netlists_dict
-    # BLANKLINE = "blankline"
-    # TITLE = "title"
-    # END_LINE = "end_line"
-    # LOAD1 = "load1"
-    # LOAD2 = "load2"
-    # LOAD3 = "load3"
-    # LOAD4 = "load4"
-    # LOAD5 = "load5"
-    # LOAD6 = "load6"
-    # LOAD7 = "load7"
-    # STIMULUS1 = "stimulus1"
-    # STIMULUS2 = "stimulus2"
-    # STIMULUS3 = "stimulus3"
-    # STIMULUS4 = "stimulus4"
-    # STIMULUS5 = "stimulus5"
-    # STIMULUS6 = "stimulus6"
-    # STIMULUS7 = "stimulus7"
-    # SUPPLIES = "supplies"
-    # MODELS = "models"
-    # DUT = "dut"
-    # RC = "rc"
+    BLANKLINE = "blankline"
+    TITLE = "title"
+    END_LINE = "end_line"
+    LOAD1 = "load1"
+    LOAD2 = "load2"
+    LOAD3 = "load3"
+    LOAD4 = "load4"
+    LOAD5 = "load5"
+    LOAD6 = "load6"
+    LOAD7 = "load7"
+    STIMULUS1 = "stimulus1"
+    STIMULUS2 = "stimulus2"
+    STIMULUS3 = "stimulus3"
+    STIMULUS4 = "stimulus4"
+    STIMULUS5 = "stimulus5"
+    STIMULUS6 = "stimulus6"
+    STIMULUS7 = "stimulus7"
+    SUPPLIES = "supplies"
+    MODELS = "models"
+    DUT = "dut"
+    RC = "rc"
     # RF = "rf"
     # CF = "cf"
     # RF_470K = "rf_470k"
-    # COUT = "cout"
+    COUT = "cout"
     # CONTROL1 = "control1"
     # CONTROL2 = "control2"
     # CONTROL3 = "control3"
@@ -68,14 +68,16 @@ class Ky:
     # TOP6 = "top6"
     # TOP7 = "top7"
 
-    # # Keys for the vectors_dict
-    # VEC_ALL = "vec_all"
-    # VEC_IN_OUT = "vec_in_out"
-    # VEC_OUT = "vec_out"
-    # VEC_AC_OUT_GAIN = "vec_ac_out_gain"
+    # Keys for the vectors_dict
+    VEC_ALL = "vec_all"
+    VEC_IN_OUT = "vec_in_out"
+    VEC_OUT = "vec_out"
+    VEC_AC_OUT_GAIN = "vec_ac_out_gain"
 
 
-def initialize() -> None:
+def initialize() -> tuple[
+    dict[str, Path], dict[str, spi.Netlist], dict[str, spi.Vectors]
+]:
     """All the setup we can do before running the different parts of the project"""
     # read config file and create config dictionary
     with open(CONFIG_FILENAME, "rb") as config_file:
@@ -109,10 +111,44 @@ def initialize() -> None:
     nets_path: Path = paths_dict[Ky.NETLISTS_PATH]  # make shorter alias
     netlists_dict: dict[str, spi.Netlist] = {}  # create empty netlist dictionary
 
+    netlists_dict[Ky.BLANKLINE] = spi.Netlist("")  # blank line for spacing
+    netlists_dict[Ky.TITLE] = spi.Netlist("* linear regulator section 1.4.4")
+    netlists_dict[Ky.END_LINE] = spi.Netlist(".end")
+
+    # create netlist objects from files and add to netlist dictionary
+    netlists_dict[Ky.DUT] = spi.Netlist(nets_path / "dut.cir")
+    netlists_dict[Ky.LOAD1] = spi.Netlist(nets_path / "load_resistive.cir")
+    netlists_dict[Ky.LOAD2] = spi.Netlist(nets_path / "load_resistive.cir")
+    # netlists_dict[Ky.LOAD3] = spi.Netlist(nets_path / "load_current_pulse.cir")
+    # netlists_dict[Ky.LOAD4] = spi.Netlist(nets_path / "load_current_ac.cir")
+    # netlists_dict[Ky.LOAD5] = spi.Netlist(nets_path / "load_current_ac.cir")
+    # netlists_dict[Ky.LOAD6] = spi.Netlist(nets_path / "load_current_pulse2.cir")
+    # netlists_dict[Ky.LOAD7] = spi.Netlist(nets_path / "load_current_pulse2.cir")
+    # netlists_dict[Ky.STIMULUS1] = spi.Netlist(nets_path / "stimulus_15v_dc.cir")
+    # netlists_dict[Ky.STIMULUS2] = spi.Netlist(nets_path / "stimulus_15v_ramp.cir")
+    # netlists_dict[Ky.STIMULUS3] = spi.Netlist(nets_path / "stimulus_15v_dc.cir")
+    # netlists_dict[Ky.STIMULUS4] = spi.Netlist(nets_path / "stimulus_15v_dc.cir")
+    # netlists_dict[Ky.STIMULUS5] = spi.Netlist(nets_path / "stimulus_15v_dc.cir")
+    # netlists_dict[Ky.STIMULUS6] = spi.Netlist(nets_path / "stimulus_15v_dc.cir")
+    # netlists_dict[Ky.STIMULUS7] = spi.Netlist(nets_path / "stimulus_15v_dc.cir")
+    # netlists_dict[Ky.SUPPLIES] = spi.Netlist(nets_path / "supplies.cir")
+    # netlists_dict[Ky.MODELS] = spi.Netlist(nets_path / "models.cir")
+    # netlists_dict[Ky.RC] = spi.Netlist(nets_path / "rc_compensation.cir")
+    # netlists_dict[Ky.COUT] = spi.Netlist(nets_path / "filter_cap.cir")
+
+    # Define a vector dictionary for simulation and post-simulation analysis
+    vectors_dict = {
+        Ky.VEC_ALL: spi.Vectors("all"),
+        Ky.VEC_IN_OUT: spi.Vectors("in out"),
+        Ky.VEC_OUT: spi.Vectors("out"),
+        Ky.VEC_AC_OUT_GAIN: spi.Vectors("out-mag"),
+    }
+    return paths_dict, netlists_dict, vectors_dict
+
 
 def main() -> None:
     # initialize paths, netlists, and vectors dictionaries
-    initialize()
+    paths_dict, netlists_dict, vectors_dict = initialize()
 
 
 if __name__ == "__main__":
