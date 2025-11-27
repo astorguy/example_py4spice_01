@@ -1,0 +1,36 @@
+* linear regulator section 1.4.4
+
+rlower1 div com 10k
+e1 beta com vref div 100
+rupper1 out div 10k
+e2 g com beta com 10
+x2 in gain gain k=0.05
+rsol1 sum out 1
+x3 gain g sum sum k1=1 k2=1 a=1
+rload out out_meas 50
+vmeas out_meas 0 dc 0
+
+vcom com 0 dc 0
+vref vref 0 dc 2.5
+
+vin in 0 dc 15
+
+.subckt gain in out k=1
+e1 out 0 in 0 {k}
+.ends gain
+
+.subckt sum in1 in2 out k1=1 k2=1 a=1
+b1 out 0 v = {a * ((v(in1) * k1) + (v(in2) * k2))}
+.ends sum
+
+.control
+* timestamp: thu nov 27 02:22:05 2025
+set wr_singlescale  $ makes one x-axis for wrdata
+set wr_vecnames     $ puts names at top of columns
+op
+print line all > /workspaces/example_py4spice_01/circuits/sec_1_04_04_lin_reg/sim_results/op1.txt
+tf v(out) vin
+print line all > /workspaces/example_py4spice_01/circuits/sec_1_04_04_lin_reg/sim_results/tf1.txt
+quit
+.endc
+.end
