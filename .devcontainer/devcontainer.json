@@ -1,18 +1,9 @@
 {
-	"name": "Python 3.12 (Ubuntu 24.04) & ngspice",
-	// 1. Base Image: Strictly Ubuntu 24.04 (Noble Numbat)
-	"image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
-
-	// 2. Features: Installs Python 3.12 on top of the Ubuntu base
+	"name": "Python 3.12 & ngspice",
+	"image": "mcr.microsoft.com/devcontainers/python:3.12",
 	"features": {
-		"ghcr.io/devcontainers/features/python:1": {
-			"version": "3.12",
-			"installTools": true,
-			"installJupyterlab": false 
-		}
+		"ghcr.io/devcontainers/features/common-utils:2": {}
 	},
-
-	// 3. Customizations: Installs VS Code Extensions for Jupyter
 	"customizations": {
 		"vscode": {
 			"extensions": [
@@ -21,19 +12,13 @@
 				"ms-toolsai.jupyter",
 				"ms-toolsai.vscode-jupyter-cell-tags",
 				"ms-toolsai.jupyter-keymap",
-				"ms-toolsai.jupyter-renderers"
-			],
-			"settings": {
-				"python.defaultInterpreterPath": "/usr/local/bin/python"
-			}
+				"ms-toolsai.jupyter-renderers",
+				"xuanli.spice"
+			]
 		}
 	},
 
-	// 4. Commands: Installs ngspice and essential Python data libraries
-	// We run apt-get update first to ensure we find the package.
-	// We also install ipykernel so the Notebooks can actually run.
-	"postCreateCommand": "sudo apt-get update && sudo apt-get install -y ngspice && pip install --user ipykernel matplotlib numpy",
-
-	// Set the remote user to the default non-root user 'vscode'
+	// Install ngspice. 
+	"postCreateCommand": "sudo apt-get update && sudo DEBIAN_FRONTEND=noninteractive apt-get install -y ngspice && pip install --user ipykernel matplotlib numpy",
 	"remoteUser": "vscode"
 }
