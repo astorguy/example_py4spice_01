@@ -1,6 +1,6 @@
 {
 	"name": "Python 3.12 & ngspice",
-	"image": "mcr.microsoft.com/devcontainers/python:3.12",
+	"image": "python:3.12-slim-bookworm",
 	"features": {
 		"ghcr.io/devcontainers/features/common-utils:2": {}
 	},
@@ -8,7 +8,6 @@
 		"vscode": {
 			"extensions": [
 				"ms-python.python",
-				"ms-python.debugpy",
 				"ms-toolsai.jupyter",
 				"ms-toolsai.vscode-jupyter-cell-tags",
 				"ms-toolsai.jupyter-keymap",
@@ -17,7 +16,6 @@
 			]
 		}
 	},
-
 	// Install ngspice. 
 	"postCreateCommand": "sudo apt-get update && sudo DEBIAN_FRONTEND=noninteractive apt-get install -y ngspice && pip install --user ipykernel matplotlib numpy",
 	"remoteUser": "vscode"
