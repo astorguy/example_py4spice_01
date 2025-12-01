@@ -11,8 +11,6 @@ sudo DEBIAN_FRONTEND=noninteractive apt-get install -y ngspice
 echo "--- Installing Python packages ---"
 # Note: The 'pip install' command is run by the 'remoteUser' (vscode),
 # so the '--user' flag is appropriate here.
-pip install --user ipykernel matplotlib numpy py4spice
-
 pip install --user \
     ipykernel==7.1.0 \
     matplotlib==3.10.7 \
