@@ -16,7 +16,7 @@
 			]
 		}
 	},
-	// Install ngspice. 
-	"postCreateCommand": "sudo apt-get update && sudo DEBIAN_FRONTEND=noninteractive apt-get install -y ngspice && pip install --user ipykernel matplotlib numpy py4spice",
+	"postCreateCommand": "${containerWorkspaceFolder}/.devcontainer/postCreateCommand.sh",
+	// "postCreateCommand": "sudo apt-get update && sudo DEBIAN_FRONTEND=noninteractive apt-get install -y ngspice && pip install --user ipykernel matplotlib numpy py4spice",
 	"remoteUser": "vscode"
 }
