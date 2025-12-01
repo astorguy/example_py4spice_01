@@ -13,4 +13,10 @@ echo "--- Installing Python packages ---"
 # so the '--user' flag is appropriate here.
 pip install --user ipykernel matplotlib numpy py4spice
 
+pip install --user \
+    ipykernel==7.1.0 \
+    matplotlib==3.10.7 \
+    numpy==2.3.5 \
+    py4spice==0.1.0
+
 echo "--- postCreateCommand script finished successfully ---"
