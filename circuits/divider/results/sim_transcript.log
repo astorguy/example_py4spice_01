@@ -1,0 +1,15 @@
+
+-----------------
+Simulation name: sim1
+Timestamp: 2025-12-01 00:54:54
+
+Note: No compatibility mode selected!
+
+
+Circuit: * simple voltage divider
+
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+
+No. of Data Rows : 1
+ngspice-39 done
