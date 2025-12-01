@@ -1,63 +1,22 @@
 {
-  "name": "trixe_python3_12_ngspice",
-  "build": {
-    "dockerfile": "Dockerfile",
-    "args": {
-      "PROJECT_ROOT": "/workspaces/${localWorkspaceFolderBasename}" // <-- Overrides the default
-    }
-  },
-  
-  // this is needed for uv to copy files instead of using hard links (avoid warning message)
-  "remoteEnv": {
-    "UV_LINK_MODE": "copy"
-  },
-
-  "postCreateCommand": "${containerWorkspaceFolder}/.devcontainer/postCreateCommand.sh",
-
-  "remoteUser": "vscode",
-
-  "customizations": {
-    "codespaces": {
-      "openFiles": [] // <-- Files to open automatically on Codespaces startup
-    },
-
-    "vscode": {
-      "extensions": [
-        "charliermarsh.ruff",
-        "github.copilot",
-        "ms-python.python",
-        "ms-python.vscode-pylance",
-        "ms-toolsai.jupyter",
-        "ryanolsonx.solarized",
-        "tamasfe.even-better-toml",
-        "wesbos.theme-cobalt2",
-        "xuanli.spice",
-        "streetsidesoftware.code-spell-checker"
-      ],
-
-      "settings": {
-        "terminal.integrated.defaultProfile.linux": "bash",
-        "editor.formatOnSave": true,
-        "python.analysis.typeCheckingMode": "strict",
-        "python.analysis.diagnosticMode": "workspace",
-        "python.analysis.include": [
-          "circuits",
-          "src/py4spice"
-        ],
-        "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
-        "python.formatting.provider": "ruff",
-        "python.linting.provider": "ruff",
-        "workbench.colorTheme": "Cobalt2",
-        "cSpell.enabled": false,
-        "[python]": {
-          "editor.defaultFormatter": "charliermarsh.ruff",
-          "editor.formatOnSave": true,
-          "editor.codeActionsOnSave": {
-            "source.fixAll": "explicit",
-            "source.organizeImports": "explicit"
-          }
-        }
-      }
-    }
-  }
+	"name": "Python 3.12 & ngspice",
+	"image": "python:3.12-slim-bookworm",
+	"features": {
+		"ghcr.io/devcontainers/features/common-utils:2": {}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-python.python",
+				"ms-toolsai.jupyter",
+				"ms-toolsai.vscode-jupyter-cell-tags",
+				"ms-toolsai.jupyter-keymap",
+				"ms-toolsai.jupyter-renderers",
+				"xuanli.spice"
+			]
+		}
+	},
+	// Install ngspice. 
+	"postCreateCommand": "sudo apt-get update && sudo DEBIAN_FRONTEND=noninteractive apt-get install -y ngspice && pip install --user ipykernel matplotlib numpy py4spice",
+	"remoteUser": "vscode"
 }

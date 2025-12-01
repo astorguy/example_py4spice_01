@@ -1,9 +1,0 @@
-[project]
-name = "example-py4spice-01"
-version = "0.1.0"
-description = "Power supply example using py4spice"
-readme = "README.md"
-requires-python = ">=3.12"
-dependencies = [
-    "py4spice>=0.1.0",
-]

@@ -1,0 +1,16 @@
+* simple voltage divider
+
+v1 in 0 dc 10v
+r1 in out 1k
+r2 out 0 2k
+
+.control
+* timestamp: mon dec  1 01:03:05 2025
+set wr_singlescale  $ makes one x-axis for wrdata
+set wr_vecnames     $ puts names at top of columns
+op
+print line all > /workspaces/learn_ngspice/circuits/divider/results/op1.txt
+quit
+.endc
+
+.end
