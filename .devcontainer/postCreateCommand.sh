@@ -17,4 +17,4 @@ pip install --user \
     numpy==2.3.5 \
     py4spice==0.1.0
 
-echo "--- postCreateCommand script finished successfully ---"
+echo "🟢🟢🟢 CODESPACE READY 🟢🟢🟢"
