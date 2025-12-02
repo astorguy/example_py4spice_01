@@ -7,7 +7,7 @@ import py4spice as spi
 
 numpy_flt = npt.NDArray[np.float64]
 
-CONFIG_FILENAME = Path("/workspaces/example_py4spice_01/circuits/config.toml")
+CONFIG_FILENAME = Path("/workspaces/learn_ngspice/examples/config.toml")
 PROJECT_SECTION = "SEC_1_04_04"
 
 

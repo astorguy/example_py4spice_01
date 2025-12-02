@@ -8,4 +8,4 @@ SIM_TRANSCRIPT_STR = "sim_transcript.log" # filename for ngspice simulation tran
 
 # Section 1-04-04 Linear Regulator
 [SEC_1_04_04]
-PROJ_PATH_STR = "/workspaces/example_py4spice_01/circuits/sec_1_04_04_lin_reg"
+PROJ_PATH_STR = "/workspaces/learn_ngspice/examples/sec_1_04_04_lin_reg"
