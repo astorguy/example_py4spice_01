@@ -9,7 +9,7 @@ Since 1972, analog simulation of electrical circuits has been dominated by Spice
 [QSPICE](https://www.qorvo.com/design-hub/design-tools/interactive/qspice) is a free Spice tool that is more intuitive than Ngspice. With a schematic frontend and easy plotting, it offers an excellent way to get familiar with Spice. However, there are some aspects of QSPICE that may lead you to use Ngspice instead.
 - QSPICE is not open source. It is owned by Quovo, and therefore subject to changes in pricing, staffing, and availability.
 - QSPICE only runs on Microsoft Windows (at the date of this writing)
-- It is more difficult to interface QSPICE to third-party tools such as [Kicad](https://www.kicad.org/) schematic capture and Python [NumPy](https://numpy.org/) arrays.
+- It is more difficult to interface QSPICE to third-party tools such as [KiCad](https://www.kicad.org/) schematic capture and Python [NumPy](https://numpy.org/) arrays.
 
 ## Ngspice structure
 
@@ -29,7 +29,7 @@ As mentioned, there are several ways to access Ngspice. Our method is to use Pyt
 
 We'll be using Jupyter Notebooks as an effective way to present tutorials.
 
-We will use [Kicad](https://www.kicad.org/) schematic capture to generate the netlist for the DUT (design under test).
+We will use [KiCad](https://www.kicad.org/) schematic capture to generate the netlist for the DUT (design under test).
 
 ## Running with Codespace
 These examples are set up to use GitHub Codespaces, enabling you to run remotely on GitHub. Simply select *Codespace* instead of *clone*. A VS-Code IDE will be created within your browser, ready to run the scripts and Ngspice simulations. Basic knowledge of VS-Code and Linux is required.
@@ -50,6 +50,7 @@ py4spice is installed in the customary way for a PyPI package.
 ```bash
 pip install py4spice
 ```
+
 
 
 
