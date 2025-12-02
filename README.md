@@ -25,7 +25,7 @@ In batch mode, the primary input to Ngspice is a *netlist*. In most cases, the *
 Creating a *netlist* is complicated and error-prone. Schematic capture tools are invaluable, especially for component connectivity.
 
 ## Learning Ngspice through examples
-As mentioned, there are several ways to access Ngspice. Our method is to use Python scripts. To facilitate, we will use the [py4spice](https://github.com/astorguy/py4spice) module. There are multiple examples showing increasing levels of advancing application.
+As mentioned, there are several ways to access Ngspice. Our ***opinionated*** method is to use Python scripts. To facilitate, we will use the [py4spice](https://github.com/astorguy/py4spice) module. There are multiple examples showing increasing levels of advancing application.
 
 We'll use [Jupyter Notebooks](https://jupyter.org/) as an effective way to present the tutorial examples. [KiCad](https://www.kicad.org/) is the schematic capture used to generate the netlist for the DUT (design under test).
 
