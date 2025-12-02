@@ -22,13 +22,17 @@
 		},
 
 		"vscode": {
+			"settings": {
+				"workbench.colorTheme": "One Dark Pro"
+			},
 			"extensions": [
 				"ms-python.python",
 				"ms-toolsai.jupyter",
 				"ms-toolsai.vscode-jupyter-cell-tags",
 				"ms-toolsai.jupyter-keymap",
 				"ms-toolsai.jupyter-renderers",
-				"xuanli.spice"
+				"xuanli.spice",
+				"zhuangtongfa.Material-Theme"
 			]
 		}
 	}
