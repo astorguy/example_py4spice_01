@@ -27,9 +27,22 @@ Creating a *netlist* is complicated and error-prone. Schematic capture tools are
 ## Learning Ngspice through examples
 As mentioned, there are several ways to access Ngspice. Our method is to use Python scripts. To facilitate, we will use the [py4spice](https://github.com/astorguy/py4spice) module. There are multiple examples showing increasing levels of advancing application.
 
-We'll be using Jupyter Notebooks as an effective way to present tutorials.
+We'll use [Jupyter Notebooks](https://jupyter.org/) as an effective way to present the tutorial examples. [KiCad](https://www.kicad.org/) is the schematic capture used to generate the netlist for the DUT (design under test).
 
-We will use [KiCad](https://www.kicad.org/) schematic capture to generate the netlist for the DUT (design under test).
+Each example consist of the following subdirectories:
+| Subdirectory | Contents |
+|--------------|----------|
+| `python` | Jupyter Notebooks or python scripts |
+| `netlists`| Netlists for input to Ngspice |
+| `results` | All the output from Ngspice simulations and post-simulation processes` |
+| `schematics` | KiCad Schematics |
+
+Here is a list of the examples. Start with the divider, as that introduces in more detail the underlying structure for all the examples.
+
+| Example | Description |
+|--------|-------------|
+| `divider` | Simple resistor divider. Introduction to using py4spice and Ngspice. No schematic. |
+| `sec_1_04_lin_reg` | Power supply example |
 
 ## Running with Codespace
 These examples are set up to use GitHub Codespaces, enabling you to run remotely on GitHub. Simply select *Codespace* instead of *clone*. A VS-Code IDE will be created within your browser, ready to run the scripts and Ngspice simulations. Basic knowledge of VS-Code and Linux is required.
