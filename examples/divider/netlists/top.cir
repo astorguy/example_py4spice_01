@@ -5,7 +5,7 @@ r2 out 0 2k
 r1 in out 1k
 
 .control
-* timestamp: tue dec  2 23:26:27 2025
+* timestamp: wed dec  3 04:45:37 2025
 set wr_singlescale  $ makes one x-axis for wrdata
 set wr_vecnames     $ puts names at top of columns
 op
